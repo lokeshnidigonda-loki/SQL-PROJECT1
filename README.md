@@ -5,7 +5,9 @@ This project presents an end-to-end data analytics solution for the Brazilian Ol
 
 ---
 ##
-![image](https://github.com/user-attachments/assets/<img width="1432" height="777" alt="OLISTDASH" src="https://github.com/user-attachments/assets/f8918d4b-1ef1-49c9-8b4d-6b0c9fbb5b72" />
+## Executive Dashboard
+
+![Olist E-Commerce Analytics Dashboard](https://github.com/user-attachments/assets/<img width="1432" height="777" alt="OLISTDASH" src="https://github.com/user-attachments/assets/87f65851-d235-4e56-a0f3-81ae31b9002d" />
 )
 ---
 
