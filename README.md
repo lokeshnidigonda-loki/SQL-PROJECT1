@@ -4,10 +4,9 @@
 This project presents an end-to-end data analytics solution for the Brazilian Olist E-Commerce dataset. Raw transactional data stored in PostgreSQL was queried, analyzed, and modeled in Power BI to create an executive-grade interactive dashboard analyzing over 100k+ orders placed between 2016 and 2018.
 
 ---
-
-## Executive Dashboard
-![Olist E-Commerce Analytics Dashboard](dashboard_preview.png)
-
+##
+![image](https://github.com/user-attachments/assets/<img width="1432" height="777" alt="OLISTDASH" src="https://github.com/user-attachments/assets/f8918d4b-1ef1-49c9-8b4d-6b0c9fbb5b72" />
+)
 ---
 
 ## Tech Stack & Tools
