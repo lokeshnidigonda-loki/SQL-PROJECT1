@@ -1,20 +1,39 @@
-# SQL Data Analysis - Brazilian E-Commerce Project
+# Olist E-Commerce Analytics Dashboard (SQL + Power BI)
 
 ## Overview
-This project contains a collection of SQL queries written to explore and analyze an e-commerce dataset from Brazil (Olist dataset). The goal of this project is to practice writing core SQL queries to answer practical business questions regarding sales, customers, shipping, and seller performance.
+This project presents an end-to-end data analytics solution for the Brazilian Olist E-Commerce dataset. Raw transactional data stored in PostgreSQL was queried, analyzed, and modeled in Power BI to create an executive-grade interactive dashboard analyzing over 100k+ orders placed between 2016 and 2018.
+
+---
+
+## Executive Dashboard
+![Olist E-Commerce Analytics Dashboard](dashboard_preview.png)
+
+---
+
+## Tech Stack & Tools
+* **Database Management:** PostgreSQL (Data querying, schema management, aggregations, CTEs)
+* **Data Visualization & Analytics:** Power BI Desktop (Data Modeling, DAX, Custom UI Design)
+* **ETL & Data Cleaning:** Power Query (Data formatting, translations, conditional logic)
+* **UI Design:** PowerPoint (Custom Dark Container Template)
 
 ---
 
 ## Database Tables Used
-* `orders` - Information about order status and delivery dates.
-* `order_items` - Product details, item prices, and freight values for each order.
-* `order_payments` - Payment types and payment amounts.
-* `customers` - Customer locations and unique customer IDs.
-* `products` - Product details and category names.
-* `product_category_name_translation` - English translation for product categories.
-* `order_reviews` - Review scores given by customers.
+* **`orders`**: Order statuses, purchase timestamps, and delivery dates.
+* **`order_items`**: Product details, item prices, and freight values for each order.
+* **`order_payments`**: Payment types and transaction values.
+* **`customers`**: Customer locations and unique customer IDs.
+* **`products`**: Product dimensions and category names.
+* **`product_category_name_translation`**: English translation for product categories.
+* **`order_reviews`**: Review scores given by customers.
 
 ---
+
+## SQL Data Analysis & Business Queries
+
+### 1. View Product Category Translations
+```sql
+SELECT * FROM product_category_name_translation LIMIT 10;
 
 ## Business Questions & SQL Queries
 
@@ -112,3 +131,19 @@ SELECT * FROM product_category_name_translation LIMIT 10;
         WHERE order_purchase_timestamp BETWEEN '2016-01-01' AND '2018-12-31'
         GROUP BY TO_CHAR(order_purchase_timestamp, 'YYYY-MM')
         ORDER BY year_month ASC;
+
+
+####Power BI Data Modeling & Key DAX Measures
+1] Total Revenue
+    Total Revenue = SUM(order_items[price])
+2]Total Orders
+    Total Orders = DISTINCTCOUNT(orders[order_id])
+3] Total Customers:
+     Total Customers = DISTINCTCOUNT(customers[customer_unique_id])
+4] Avg Days Delivered Early / Delay:
+                 Avg Delay Days = 
+            AVERAGEX(
+                FILTER(orders, NOT(ISBLANK(orders[order_delivered_customer_date]))),
+                DATEDIFF(orders[order_estimated_delivery_date], orders[order_delivered_customer_date], DAY)
+            )
+
